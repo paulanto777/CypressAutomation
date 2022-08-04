@@ -1,0 +1,31 @@
+{
+  "name": "cypressautomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules\\.bin\\cypress run --spec cypress\\integration\\1-getting-started\\UsingPom.js --reporter mochawesome",
+    "chrome": "npm run test -- --spec cypress\\integration\\1-getting-started\\UsingPom.js --headed --browser chrome --reporter mochawesome",
+    "recorded": "npm run test -- --spec cypress\\integration\\1-getting-started\\UsingPom.js --headed --browser chrome --reporter mochawesome --record --key 5ebac4fe-ce15-4dd0-ae7c-e187cdf9496d",
+    "cucumber": "npm run test -- --spec cypress\\integration\\1-getting-started\\BDD\\Ecommerce.feature --headed --browser chrome --reporter mochawesome --record --key 5ebac4fe-ce15-4dd0-ae7c-e187cdf9496d"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  },
+  "author": "Paul Anto",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.3.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-iframe": "^1.0.1",
+    "mocha": "^9.2.0",
+    "mochawesome": "^7.0.1",
+    "multiple-cucumber-html-reporter": "^1.18.3"
+  }
+}

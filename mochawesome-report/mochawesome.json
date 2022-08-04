@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-04-08T18:31:19.308Z",
+    "end": "2022-04-08T18:31:33.419Z",
+    "duration": 14111,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5c3ca1f1-12af-418f-b545-51fd98aae70d",
+      "title": "",
+      "fullFile": "cypress/integration/1-getting-started/UsingPom.js",
+      "file": "cypress/integration/1-getting-started/UsingPom.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3d71daf4-c8c1-4ed9-9020-f6910fe1d0b6",
+          "title": "Hooks suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Hooks test case",
+              "fullTitle": "Hooks suite Hooks test case",
+              "timedOut": null,
+              "duration": 10715,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "/* Creating object for homepage */\nvar homePage = new _HomePage[\"default\"]();\nvar productPage = new _Products[\"default\"]();\ncy.visit(Cypress.env('url') + '/angularpractice/');\nhomePage.getEditBox().type(value.name);\n/* cy.get(':nth-child(1) > .form-control').type(value.name) */\nhomePage.getGender().select(value.gender);\n/* cy.get('select').select(value.gender) */\nhomePage.getTwoWayDataBinding().should('have.value', value.name);\n/* cy.get(':nth-child(4) > .ng-untouched').should('have.value', value.name) */\nhomePage.getEditBox().should('have.attr', 'minlength', '2');\n/* cy.get(':nth-child(1) > .form-control').should('have.attr', 'minlength', '2') */\nhomePage.getEntreprenuer().should('be.disabled');\n/*cy.get('#inlineRadio3').should('be.disabled') */\nhomePage.getShopTab().click();\nvalue.product.forEach(function (element) {\n  cy.selectProduct(element);\n});\nproductPage.getCheckoutButton().click();\nvar sum = 0;\nproductPage.getProductSum().each(function ($el, index, $list) {\n  var currencyText = $el.text();\n  var res = currencyText.split(\" \");\n  res = res[1].trim();\n  sum = Number(sum) + Number(res);\n}).then(function () {\n  cy.log(sum);\n});\nproductPage.getTotal().then(function (element) {\n  var totalSum = element.text();\n  var total = totalSum.split(\" \");\n  total = total[1].trim();\n  expect(Number(total)).to.equal(sum);\n});\nproductPage.getConfirmCheckoutButton().click({\n  multiple: true\n});\n/* for a specific test case timeout can be defined */\nCypress.config('defaultCommandTimeout', 20000);\nproductPage.getCountryTextbox().type('India');\nproductPage.getValueFromDropdown().click();\nCypress.config('defaultCommandTimeout', 8000);\nproductPage.getCheckbox().click({\n  force: true\n}); // productPage.getTermsConditions().click()\nproductPage.getPurchaseButton().click(); // productPage.getAlertMessage().should('have.text', 'Success! Thank you! Your order will be delivered in next few weeks :-).')\nproductPage.getAlertMessage().then(function (element) {\n  var actualText = element.text();\n  expect(actualText.includes('Success')).to.be[\"true\"];\n});",
+              "err": {},
+              "uuid": "24c318f7-dd33-425d-8a73-1d16a170d0da",
+              "parentUUID": "3d71daf4-c8c1-4ed9-9020-f6910fe1d0b6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "24c318f7-dd33-425d-8a73-1d16a170d0da"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 10715,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}
